@@ -1,9 +1,14 @@
-const express = require ('express');
-const app = express();
+const express = require('express');
+require('./services/passport');
+const authRoutes = require('./routes/authRoutes');
 
-app.get('/', (req, res) => {
-    res.send({amg:'mercedes'});
-});
+const app = express();  
+
+authRoutes(app);
+
+// app.get('/', (req, res) => {
+//     res.send({amg:'mercedes'});
+// });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);
